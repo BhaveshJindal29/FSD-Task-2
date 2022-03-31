@@ -19,7 +19,7 @@ function getStudentDetails(){
     setTimeout(()=>{
         let Stundent ="";
 
-        Stundent.forEach((s)=>{
+        studentInfo.forEach((s)=>{
             console.log(s);
         })
     }),1000
@@ -32,6 +32,7 @@ function AddStudent(newStudent){
         (resolve,reject)=>{
             setTimeout(()=>{
                 studentInfo.push(newStudent)
+                getStudentDetails();
                 let flag= true;
                 if(flag){
                     resolve()
@@ -44,6 +45,4 @@ function AddStudent(newStudent){
 }
 
 
-AddStudent({name:"D",score:"80%"}).then(getStudentDetails).catch(err=>console.log(err));
-
-
+AddStudent({name:"D",score:"80%"},getStudentDetails);
